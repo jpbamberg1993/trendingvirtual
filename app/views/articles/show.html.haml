@@ -6,5 +6,11 @@
   %strong Text:
   = @article.text
 
+%h2 Comments
+= render @article.comments
+      
+%h2 Add Comment
+= render 'comments/form'
+
 = link_to 'Edit', edit_article_path(@article)
 = link_to 'Back', articles_path
