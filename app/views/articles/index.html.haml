@@ -1,23 +1,33 @@
-%h1 Listing Articles
-
 = link_to 'New Article', new_article_path
 
-%table
-  %tr
-    %th Title
-    %th Text
-
-  - @articles.each do |article|
-    %tr
-      %td
-        = article.title 
-      %td
-        = article.text 
-      %td
-        = link_to 'Show', article_path(article)
-      %td
-        = link_to 'Edit', edit_article_path(article)
-      %td
-        = link_to 'Delete', article_path(article),
-          method: :delete,
-          data: { confirm: 'Are you sure?' }
+/ Page Content
+- @articles.each do |article|
+  .container
+    .row
+      / Link To Articles
+      = link_to 'My Blog', controller: 'articles'
+      / Blog Entries Column
+      .col-md-8
+        %h1.page-header
+          Page Heading
+          %small Secondary Text
+        / First Blog Post
+        %h2
+          = link_to article.title, page_path('blogpost')
+        %p.lead
+          by #{link_to article.author, root_path}
+        %p
+          %span.glyphicon.glyphicon-time
+          = article.created_at.strftime("%Y-%m-%d")
+        %hr/
+        %img.img-responsive{alt: "", src: "http://placehold.it/900x300"}/
+        %hr/
+        = article.text
+        = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, page_path('blogpost'), class: "btn btn-primary"
+        %hr/
+        / Pager
+        %ul.pager
+          %li.previous
+            %a{href: "#"} ← Older
+          %li.next
+            %a{href: "#"} Newer →
