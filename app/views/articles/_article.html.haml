@@ -1,0 +1,14 @@
+- @articles.each do |article|
+  %h2
+    = link_to article.title, page_path('blogpost')
+  %p.lead
+    by #{link_to article.author, root_path}
+  %p
+    %span.glyphicon.glyphicon-time
+    = article.created_at.strftime("%Y-%m-%d")
+  %hr/
+  %img.img-responsive{alt: "", src: "http://placehold.it/900x300"}/
+  %hr/
+  = article.text
+  = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, page_path('blogpost'), class: "btn btn-primary"
+  %hr/
