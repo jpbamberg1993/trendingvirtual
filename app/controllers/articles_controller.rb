@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
 	http_basic_authenticate_with name: 'Bamberg', password: 'password', except: [:index, :show]
 
   def index
-    @articles = Article.all
+    articles = Article.all
+    @articles = articles.order('created_at DESC')
   end
 
   def show
