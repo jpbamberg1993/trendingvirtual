@@ -30,5 +30,6 @@
       / Comments Form
       = render 'comments/form'
       %hr/
-      %h2 Comments
-      = render @article.comments
+      - if @article.comments.first.body != nil
+        %h2 Comments
+        = render @article.comments
