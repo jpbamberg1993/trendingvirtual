@@ -9,7 +9,7 @@
   %hr/
   %img.img-responsive{alt: "", src: "http://placehold.it/900x300"}/
   %hr/
-  = article.text
+  = article.text.html_safe
   = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe,
     article_path(article[:id]),
     class: "btn btn-primary"

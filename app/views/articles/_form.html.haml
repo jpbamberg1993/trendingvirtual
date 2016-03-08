@@ -7,18 +7,14 @@
       %ul
         - @article.errors.full_messages.each do |msg|
           %li= msg
-
   %p
     = f.label :author
     = f.text_field :author
-
   %p
     = f.label :title
     = f.text_field :title
-
   %p
     = f.label :text
-    = f.text_area :text
-
+    = f.text_area :text, class: 'redactor', id: 'article-content'
   %p
     = f.submit

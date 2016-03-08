@@ -15,12 +15,10 @@
     = f.label :title
     %br
     = f.text_field :title
-
   %p
     = f.label :text
     %br
-    = f.text_area :text
-
+    = f.text_area :text, class: 'redactor', id: 'edit-content'
   %p
     = f.submit
 
