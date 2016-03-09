@@ -20,9 +20,6 @@
           %br/
           = @article.created_at.strftime('%d-%m-%Y')
       %hr/
-      / Preview Image
-      = image_tag('http://placehold.it/900x300', class: 'img-responsive', alt: '')
-      %hr/
       / Post Content
       %p
         = @article.text.html_safe
