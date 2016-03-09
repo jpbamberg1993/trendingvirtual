@@ -3,12 +3,8 @@
   = form_for([@article, @article.comments.build]) do |f|
     .form-group
       %p
-        = f.label :commenter
-        %br
-        = f.text_field :commenter
+        = f.hidden_field :commenter, value: current_user.name
       %p
-        = f.label :body
-        %br
         = f.text_area :body, class: 'redactor form-control', id: 'comment-form'
     %button.btn{type: 'submit'}
       = f.submit
