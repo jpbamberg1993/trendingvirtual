@@ -5,6 +5,6 @@
       %p
         = f.hidden_field :commenter, value: current_user.name
       %p
-        = f.text_area :body, class: 'redactor form-control', id: 'comment-form'
+        = f.text_area :body, class: 'form-control', id: 'comment-form'
     %button.btn{type: 'submit'}
       = f.submit
