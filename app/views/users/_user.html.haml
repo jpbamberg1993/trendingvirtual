@@ -1,8 +1,15 @@
 %td
   = link_to user.email, user
 %td
-  = form_for(user) do |f|
-    = f.select(:role, User.roles.keys.map {|role| [role.titleize,role]})
-    = f.submit 'Change Role', class: 'button-xs'
+  - if user.admin?
+    = link_to("Disable Admin", user_path(user, permissions: { admin: false }),
+      data: { confirm: "Are you sure?" },
+      method: :put, class: 'button-xs') unless user == current_user
+  - else
+    = link_to("Enable Admin", user_path(user, permissions: { admin: true }),
+      data: { confirm: "Are you sure?" },
+      method: :put, class: 'button-xs') unless user == current_user
 %td
-  = link_to("Delete user", user_path(user), :data => { confirm: "Are you sure?" }, method: :delete, class: 'button-xs') unless user == current_user
+  = link_to("Delete user", user_path(user),
+    :data => { confirm: "Are you sure?" },
+    method: :delete, class: 'button-xs') unless user == current_user
