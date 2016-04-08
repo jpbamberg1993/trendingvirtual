@@ -1,14 +1,16 @@
 - @articles.each do |article|
-  %h2
-    = link_to article.title, page_path('blogpost')
-  %p.lead
-    by #{link_to article.author, root_path}
-  %p
-    %span.glyphicon.glyphicon-time
-    = article.created_at.strftime("%d-%m-%Y")
-  %hr/
-  = article.text.html_safe
-  = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe,
-    article_path(article[:id]),
-    class: "btn btn-primary"
-  %hr/
+  .row
+    %h2.col-xs-12
+      = link_to article.title, article_path(article[:id])
+    %p.lead.col-xs-6
+      by #{link_to article.author, root_path}
+    %p.time.lead.col-xs-6
+      %span.glyphicon.glyphicon-time
+      = article.created_at.strftime("%d-%m-%Y")
+    %hr/
+    #display-content.col-xs-12
+      = article.text.html_safe
+      = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe,
+        article_path(article[:id]),
+        class: "btn btn-primary"
+    %hr/

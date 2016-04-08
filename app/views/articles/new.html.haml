@@ -1,5 +1,8 @@
-%h1 New Article
+- title "New Article"
+.container
+  %h1 New Article
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Back', articles_path
+  %p.back.btn.btn-default.col-xs-4.col-xs-offset-2
+    = link_to 'Back', articles_path

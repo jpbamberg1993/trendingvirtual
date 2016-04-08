@@ -7,14 +7,17 @@
       %ul
         - @article.errors.full_messages.each do |msg|
           %li= msg
-  %p
+  %p.author.col-sm-6
     = f.label :author
-    = f.text_field :author
-  %p
+    = f.text_field :author, class:"form-control", placeholder:"Author"
+  %p.title.col-sm-6
     = f.label :title
-    = f.text_field :title
-  %p
+    = f.text_field :title, class:"form-control", placeholder:"Title"
+  %p.content.col-xs-12
     = f.label :text
-    = f.text_area :text, class: 'redactor', id: 'article-content'
-  %p
-    = f.submit
+    = f.text_area :text,
+      class: 'redactor',
+      id: 'article-content',
+      placeholder:"Content of Article..."
+  = f.submit "Create",
+    class:"form-create btn btn-default col-xs-4 col-xs-offset-1"
