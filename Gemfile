@@ -22,6 +22,16 @@ gem 'redactor-rails', '~> 0.5.0'
 gem 'mini_magick'
 gem 'carrierwave'
 
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'sqlite3'
+end
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'better_errors'
@@ -38,16 +48,6 @@ group :development do
   gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false
   gem 'spring-commands-rspec'
-end
-
-group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
-  gem 'pry-rails'
-  gem 'pry-rescue'
-  gem 'rspec-rails'
-  gem 'rubocop'
-  gem 'sqlite3'
 end
 
 group :test do
