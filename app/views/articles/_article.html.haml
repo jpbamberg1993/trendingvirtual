@@ -2,8 +2,11 @@
   .row.article-row
     %h5.article-title.col-xs-12
       = link_to article_path(article[:id]) do
-        = article.title
-        .fa.fa-angle-double-right.fa-lg{class: "#{cycle_colors}"}
+        .row.vertical-align
+          .col-xs-10
+            = article.title
+          .col-xs-1.article-arrow
+            .fa.fa-angle-double-right.fa-lg{class: "#{cycle_colors}"}
     .hidden-xs
       %p.lead.col-xs-6
         by #{link_to article.author, root_path}
