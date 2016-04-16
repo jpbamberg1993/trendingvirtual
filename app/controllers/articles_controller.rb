@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
     except: [:index, :show]
 
   def index
-    articles = Article.all
+    articles = Article.paginate(page: params[:page], per_page: 10)
     @articles = articles.order('created_at DESC')
   end
 
