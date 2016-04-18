@@ -23,6 +23,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'will_paginate', '~> 3.1'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
+gem "rack-timeout"
 
 group :development, :test do
   gem 'factory_girl_rails'
