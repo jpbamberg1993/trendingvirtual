@@ -1,17 +1,35 @@
 #logo
   max-width: 100%
-
-.navbar-header
-  height: 50px
+  margin-top: 3px
 
 .navbar-default .navbar-toggle
+  margin: 0
+  background: none
   border-color: transparent
+  &:hover, &:active
+    background: none
 
 .icon-bar
   color: #000
 
-.navbar-default .navbar-toggle .icon-bar
-  background-color: #000
+.navbar-default
+  background-color: #0D0D0D
+  .navbar-nav > li > a
+    color: #fff
+  .navbar-toggle
+    margin: 0
+    background: none
+    border-color: transparent
+    &:hover, &:active
+      background: none
+    .icon-bar,
+    &.navbar-toggle:hover .icon-bar
+      background-color: #fff
 
 .navbar
   margin-bottom: 0
+  min-height: 0
+  border: none
+
+.navbar-header
+  padding: 20px 0

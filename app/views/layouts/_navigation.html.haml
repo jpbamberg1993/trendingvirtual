@@ -3,8 +3,10 @@
   .row
     .container-fluid
       .navbar-header
-        .col-xs-9.vcenter.nopadding.verticle-center
-          = image_tag "tv-logo", id: "logo", alt: "Trending Virtual Logo"
+        .col-xs-9
+          = link_to root_path do
+            = image_tag "tv-logo-white",
+              id: "logo", alt: "Trending Virtual Logo"
         .col-xs-2.col-xs-offset-1
           %button.navbar-toggle{ "data-target" => ".navbar-collapse",
             "data-toggle" => "collapse", type: "button" }
@@ -12,8 +14,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          -# = link_to 'Home', root_path, class: 'navbar-brand'
       .collapse.navbar-collapse
         %ul.nav.navbar-nav
-          %li= link_to 'Home', root_path#, class: 'navbar-brand'
+          %li= link_to 'Home', root_path
           = render 'layouts/navigation_links'
