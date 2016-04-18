@@ -2,13 +2,11 @@
 .container
   .row
     / Blog Post Content Column
-    .col-md-8
-      = link_to 'Edit', edit_article_path(@article)
-      = link_to 'Back', articles_path
-      / Blog post
+    #article-header.col-md-8
       / Title
       %h1
         = @article.title
+      = link_to 'Edit', edit_article_path(@article)
       / Author
       %p.lead
         by
@@ -21,13 +19,14 @@
           %br/
           = @article.created_at.strftime('%d-%m-%Y')
       %hr/
-      / Post Content
+    / Post Content
+    #article-body.col-md-8
       %p
         = @article.text.html_safe
-      / Blog Comments
+    / Blog Comments
+    #article-comments.col-md-8
       / Comments Form
-      = render 'comments/form'
       %hr/
+      = render 'comments/form'
       - if @article.comments.first.body != nil
-        %h2 Comments
         = render @article.comments

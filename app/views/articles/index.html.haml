@@ -2,12 +2,6 @@
 .container
   .row
     / Blog Entries Column
-    .col-md-8
+    .col-md-8.no-padding
       / Articles
       = render 'articles/article'
-      / Pager
-      %ul.pager
-        %li.previous
-          %a{href: "#"} ← Older
-        %li.next
-          %a{href: "#"} Newer →

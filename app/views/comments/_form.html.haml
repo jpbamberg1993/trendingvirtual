@@ -1,10 +1,11 @@
 .well
-  %h4 Leave a Comment:
   = form_for([@article, @article.comments.build]) do |f|
     .form-group
       %p
-        = f.hidden_field :commenter, value: current_user.name if current_user != nil
+        = f.hidden_field :commenter,
+          value: current_user.name if current_user != nil
       %p
-        = f.text_area :body, class: 'form-control', id: 'comment-form'
-    %button.btn{type: 'submit'}
+        = f.text_area :body, placeholder: "Leave a comment...",
+          class: 'form-control', id: 'comment-form'
+    %button.btn{ type: 'submit' }
       = f.submit

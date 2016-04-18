@@ -2,8 +2,11 @@
   .row.article-row
     %h5.article-title.col-xs-12
       = link_to article_path(article[:id]) do
-        = article.title
-        .fa.fa-angle-double-right.fa-lg{class: "#{cycle_colors}"}
+        .row.vertical-align
+          .col-xs-10.no-padding-r
+            = article.title
+          .col-xs-1.article-arrow.flex-center-vertically
+            .fa.fa-angle-double-right.fa-lg{class: "#{cycle_colors}"}
     .hidden-xs
       %p.lead.col-xs-6
         by #{link_to article.author, root_path}
@@ -17,3 +20,4 @@
           article_path(article[:id]),
           class: "btn btn-primary"
     %hr/
+= will_paginate @collection, class: "pag-wrap", previous_label: "&#8592; Prev"
