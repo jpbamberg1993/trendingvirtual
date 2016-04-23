@@ -2,8 +2,8 @@
   = form_for([@article, @article.comments.build]) do |f|
     .form-group
       %p
-        = f.hidden_field :commenter,
-          value: current_user.name if current_user != nil
+        - if current_user.username != nil
+          = f.hidden_field :commenter, value: current_user.username
       %p
         = f.text_area :body, placeholder: "Leave a comment...",
           class: 'form-control', id: 'comment-form'
