@@ -2,10 +2,11 @@
   = form_for([@article, @article.comments.build]) do |f|
     .form-group
       %p
-        - if current_user.username != nil
-          = f.hidden_field :commenter, value: current_user.username
+        = f.hidden_field :commenter, value: current_user.email
       %p
-        = f.text_area :body, placeholder: "Leave a comment...",
-          class: 'form-control', id: 'comment-form'
+        = f.text_area :body,
+          placeholder: "Join the discussion...",
+          class: 'form-control',
+          id: 'comment-form'
     %button.btn{ type: 'submit' }
-      = f.submit
+      = f.submit "Post"
