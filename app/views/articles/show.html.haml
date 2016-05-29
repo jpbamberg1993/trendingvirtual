@@ -27,6 +27,5 @@
     #article-comments.col-md-8
       / Comments Form
       %hr/
-      = render 'comments/form'
-      - if @article.comments.first.body != nil
-        = render @article.comments
+      = render 'comments/form' if user_signed_in?
+      = render @article.comments if @article.comments.first.body != nil
