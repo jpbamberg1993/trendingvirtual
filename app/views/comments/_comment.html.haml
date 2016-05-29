@@ -2,10 +2,10 @@
   - if comment.body != nil
     %li
       .commenterImage
-        - if comment.commenter != nil
-          = gravatar_for comment.commenter
+        - if comment.email != nil
+          = gravatar_for comment.email
       .commenterName
-        = comment.commenter
+        = comment.username
       .commentText
         %p
           = comment.body.html_safe
