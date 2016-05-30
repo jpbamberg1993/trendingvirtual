@@ -1,3 +1,10 @@
+.commenterImage,
+.commenterImage.img-responsive,
+.commenterImage.img,
+.commenterName,
+.commentDelete
+  display: inline-block
+
 #article-comments > .well
   background: none
   border: none
@@ -29,3 +36,30 @@
 .redactor-toolbar
   box-shadow: none
   border: 1px solid #eee
+
+ul.commentList
+  padding-left: 0
+  .col-xs-10
+    padding-left: 0
+
+.commenterImage
+  &.col-xs-2
+    padding: 0 10px 0 5px
+  .img-responsive, .img
+    width: 5.5em
+    border-radius: 5px
+
+.commentDelete
+  float: right
+  & > a
+    color: #d3d3d3
+
+.commenterName
+  line-height: 0
+  color: #288ce4
+
+.commentText
+  .col-xs-12
+    padding-left: 5px
+  p
+    margin: 0 0 5px
