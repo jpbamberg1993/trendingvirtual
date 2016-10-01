@@ -28,4 +28,5 @@
       / Comments Form
       %hr/
       = render 'comments/form' if user_signed_in?
-      = render @article.comments if @article.comments.first.body != nil
+      - if @article.comments.count > 0
+        = render @article.comments
