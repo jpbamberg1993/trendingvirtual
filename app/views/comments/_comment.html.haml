@@ -6,11 +6,6 @@
       .col-xs-10
         .commenterName
           = comment.username
-        .commentDelete
-          = link_to [comment.article, comment],
-            method: :delete,
-            data: { confirm: 'Are you sure?' } do
-            %span.glyphicon.glyphicon-remove
         .commentDate
           %span.date.sub-text
             = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
@@ -33,8 +28,9 @@
               Reply
             %li.bullet
               •
-            - binding.pry
             %li.delete-comment
-              Delete
-
+              = link_to [comment.article, comment],
+                method: :delete,
+                data: { confirm: 'Are you sure?' } do
+                Delete
   %br
