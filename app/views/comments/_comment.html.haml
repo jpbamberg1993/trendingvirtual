@@ -14,6 +14,27 @@
         .commentDate
           %span.date.sub-text
             = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
-      .commentText.col-xs-12
-        %p
+        %p.commentText
           = comment.body.html_safe
+        %footer.comment-footer
+          %ul
+            %li.voting
+              %a.vote-up
+                %i.glyphicon.glyphicon-chevron-up
+              %a.vote-down
+                %i.glyphicon.glyphicon-chevron-down
+            %li.bullet
+              •
+            %li.edit
+              Edit
+            %li.bullet
+              •
+            %li.reply
+              Reply
+            %li.bullet
+              •
+            - binding.pry
+            %li.delete-comment
+              Delete
+
+  %br
