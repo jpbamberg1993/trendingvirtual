@@ -1,19 +1,19 @@
-%ul.commentList
-  %li.row
-    .commenterImage.col-xs-2
-      - if comment.email != nil
+- unless comment.body.nil?
+  %ul.commentList
+    %li.row
+      .commenterImage.col-xs-2
         = gravatar_for comment.email
-    .col-xs-10
-      .commenterName
-        = comment.username
-      .commentDelete
-        = link_to [comment.article, comment],
-          method: :delete,
-          data: { confirm: 'Are you sure?' } do
-          %span.glyphicon.glyphicon-remove
-      .commentDate
-        %span.date.sub-text
-          = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
-    .commentText.col-xs-12
-      %p
-        = comment.body.html_safe
+      .col-xs-10
+        .commenterName
+          = comment.username
+        .commentDelete
+          = link_to [comment.article, comment],
+            method: :delete,
+            data: { confirm: 'Are you sure?' } do
+            %span.glyphicon.glyphicon-remove
+        .commentDate
+          %span.date.sub-text
+            = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
+      .commentText.col-xs-12
+        %p
+          = comment.body.html_safe
