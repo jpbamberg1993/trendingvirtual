@@ -24,6 +24,7 @@ gem 'carrierwave'
 gem 'will_paginate', '~> 3.1'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'browser-timezone-rails'
+gem 'closure_tree', '~> 6.2'
 
 group :development, :test do
   gem 'factory_girl_rails'
