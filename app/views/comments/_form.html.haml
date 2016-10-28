@@ -1,5 +1,5 @@
 .well
-  = form_for([@article, @article.comments.build]) do |f|
+  = form_for [@article, @article.comments.build] do |f|
     .form-group
       %p
         = f.hidden_field :email, value: current_user.email
