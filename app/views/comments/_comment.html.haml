@@ -25,7 +25,7 @@
             %li.bullet
               •
             %li.reply
-              Reply
+              %a.reply-comment-btn{ href: 'javascript:void(0);' } Reply
             %li.bullet
               •
             %li.delete-comment
@@ -33,4 +33,7 @@
                 method: :delete,
                 data: { confirm: 'Are you sure?' } do
                 Delete
+          %br
+          .reply-comment-form.hidden
+            = render 'comments/reply_form'
   %br
