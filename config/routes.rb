@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :users
+
   resources :articles do
-    resources :comments, only: [:create, :destroy]
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
   end
 end

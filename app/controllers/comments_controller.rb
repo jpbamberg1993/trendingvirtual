@@ -1,15 +1,24 @@
 class CommentsController < ApplicationController
+  before_action :find_commentable
+  def new
+    @comment = Comment.new
+  end
+
   def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
-    redirect_to article_path(@article)
+    @comment = @commentable.comments.new comment_params
+
+    if @comment.save
+      redirect_to :back, notice: 'Your comment was successfully posted!'
+    else
+      redirect_to :back, notice: 'Your comment wasn\'t posted!'
+    end
+  end
+
   end
 
   def destroy
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
-    @comment.destroy
-    redirect_to article_path(@article)
+    Comment.find(params[:id]).destroy
+    redirect_to article_path(params[:commentable_id])
   end
 
   private

@@ -30,4 +30,5 @@
       = render 'comments/form' if user_signed_in?
       %br
       - if @article.comments.count > 0
-        = render @article.comments
+        %ul.commentList
+          = render partial: 'comments/comment', collection: @article.comments

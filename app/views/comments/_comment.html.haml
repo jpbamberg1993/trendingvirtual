@@ -1,39 +1,38 @@
 - unless comment.body.nil?
-  %ul.commentList
-    %li.row
-      .commenterImage.col-xs-2
-        = gravatar_for comment.email
-      .col-xs-10
-        .commenterName
-          = comment.username
-        .commentDate
-          %span.date.sub-text
-            = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
-        %p.commentText
-          = comment.body.html_safe
-        %footer.comment-footer
-          %ul
-            %li.voting
-              %a.vote-up
-                %i.glyphicon.glyphicon-chevron-up
-              %a.vote-down
-                %i.glyphicon.glyphicon-chevron-down
-            %li.bullet
-              •
             %li.edit
               Edit
-            %li.bullet
-              •
-            %li.reply
-              %a.reply-comment-btn{ href: 'javascript:void(0);' } Reply
-            %li.bullet
-              •
-            %li.delete-comment
-              = link_to [comment.article, comment],
-                method: :delete,
-                data: { confirm: 'Are you sure?' } do
-                Delete
-          %br
-          .reply-comment-form.hidden
-            = render 'comments/reply_form'
-  %br
+  %li.row
+    .commenterImage.col-xs-2
+      = gravatar_for comment.email
+    .col-xs-10
+      .commenterName
+        = comment.username
+      .commentDate
+        %span.date.sub-text
+          = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
+      %footer.comment-footer
+        %ul
+          %li.voting
+            %a.vote-up
+              %i.glyphicon.glyphicon-chevron-up
+            %a.vote-down
+              %i.glyphicon.glyphicon-chevron-down
+          %li.bullet
+            •
+          %li.bullet
+            •
+          %li.reply
+            %a.reply-comment-btn{ href: 'javascript:void(0);' } Reply
+          %li.bullet
+            •
+          %li.delete-comment
+            = link_to 'Delete',
+              comment_path(id: comment.id, commentable_id: comment.commentable_id),
+              data: {confirm: 'Are you sure?'},
+              method: :delete
+        %br
+        .reply-comment-form.hidden
+          = render 'comments/reply_form', { comment: comment }
+  %ul
+    = render partial: 'comments/comment', collection: comment.comments
+%br
