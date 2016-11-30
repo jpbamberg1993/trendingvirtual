@@ -33,8 +33,9 @@
               data: {confirm: 'Are you sure?'},
               method: :delete
         %br
-        .reply-comment-form.hidden
-          = render 'comments/reply_form', { comment: comment }
+        - unless current_user == nil
+          .reply-comment-form.hidden
+            = render 'comments/reply_form', { comment: comment }
   %ul
     = render partial: 'comments/comment', collection: comment.comments
 %br
