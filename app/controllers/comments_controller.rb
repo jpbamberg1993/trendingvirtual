@@ -27,6 +27,20 @@ class CommentsController < ApplicationController
     redirect_to article_path(params[:commentable_id])
   end
 
+  def upvote
+    @comment = Comment.find(params[:id])
+    @comment.upvote += 1
+    @comment.save!
+    redirect_to :back
+  end
+
+  def downvote
+    @comment = Comment.find(params[:id])
+    @comment.downvote += 1
+    @comment.save!
+    redirect_to :back
+  end
+
   private
 
   def comment_params

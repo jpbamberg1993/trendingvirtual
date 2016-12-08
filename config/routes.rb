@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments
   end
+
+  post 'upvote', to: 'comments#upvote'
+  post 'downvote', to: 'comments#downvote'
 end
