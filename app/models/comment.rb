@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
+  acts_as_votable
 
   before_save :default_vote_count
 

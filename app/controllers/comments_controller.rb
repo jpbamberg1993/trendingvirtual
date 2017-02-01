@@ -29,15 +29,25 @@ class CommentsController < ApplicationController
 
   def upvote
     @comment = Comment.find(params[:id])
-    @comment.upvote += 1
-    @comment.save!
+    @comment.vote_by voter: current_user
+    redirect_to :back
+  end
+
+  def unupvote
+    @comment = Comment.find(params[:id])
+    @comment.unliked_by current_user
     redirect_to :back
   end
 
   def downvote
     @comment = Comment.find(params[:id])
-    @comment.downvote += 1
-    @comment.save!
+    @comment.downvote_from current_user
+    redirect_to :back
+  end
+
+  def undownvote
+    @comment = Comment.find(params[:id])
+    @comment.undisliked_by current_user
     redirect_to :back
   end
 

@@ -1,0 +1,7 @@
+.vote-up{class: ('user-voted' if user_upvoted?(comment))}
+  = upvotes_present?(comment)
+  %i.glyphicon.glyphicon-chevron-up
+
+.vote-down{class: ('user-voted' if user_downvoted?(comment))}
+  = downvotes_present?(comment)
+  %i.glyphicon.glyphicon-chevron-down

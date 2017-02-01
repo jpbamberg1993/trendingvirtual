@@ -27,10 +27,12 @@ gem 'browser-timezone-rails'
 gem 'closure_tree', '~> 6.2'
 gem 'rb-readline', '~> 0.5.3'
 gem 'best_in_place', '~> 3.0.1'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'

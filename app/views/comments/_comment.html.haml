@@ -9,19 +9,15 @@
         %span.date.sub-text
           = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
       %p.commentText
-        = best_in_place comment, :body, type: :textarea, ok_button: "Save",
+        = best_in_place comment, :body, type: :textarea, ok_button: 'Save',
           activator: "#activator-#{comment.id}"
       %footer.comment-footer
         %ul
           %li.voting
-            .vote-up
-              = comment.upvote if comment.upvote > 0
-              = link_to upvote_path(id: comment.id), method: :post do
-                %i.glyphicon.glyphicon-chevron-up
-            .vote-down
-              = comment.downvote if comment.downvote > 0
-              = link_to downvote_path(id: comment.id), method: :post do
-                %i.glyphicon.glyphicon-chevron-down
+            - if current_user.present?
+              = render 'comments/user_voting', comment: comment
+            - else
+              = render 'comments/no_user_voting', comment: comment
           %li.bullet
             •
           %li.edit

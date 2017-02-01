@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   end
 
   post 'upvote', to: 'comments#upvote'
+  post 'unupvote', to: 'comments#unupvote'
   post 'downvote', to: 'comments#downvote'
+  post 'undownvote', to: 'comments#undownvote'
 end
