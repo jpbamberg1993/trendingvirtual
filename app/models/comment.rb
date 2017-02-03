@@ -9,4 +9,18 @@ class Comment < ActiveRecord::Base
     self.upvote ||= 0
     self.downvote ||= 0
   end
+
+  def self.save_comment(commentable, comment_params)
+    if (commentable.class != Article) &&
+      (commentable.commentable.class == Comment)
+      commentable = commentable.commentable
+    end
+    comment = commentable.comments.new comment_params
+
+    if comment.save
+      'Your comment was successfully posted!'
+    else
+      'Your comment wasn\'t posted!'
+    end
+  end
 end

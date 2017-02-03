@@ -7,17 +7,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    if (@commentable.class != Article) &&
-      (@commentable.commentable.class == Comment)
-      @commentable = @commentable.commentable
-    end
-    @comment = @commentable.comments.new comment_params
-
-    if @comment.save
-      redirect_to :back, notice: 'Your comment was successfully posted!'
-    else
-      redirect_to :back, notice: 'Your comment wasn\'t posted!'
-    end
+    response = Comment.save_comment(@commentable, comment_params)
+    redirect_to :back, notice: response
   end
 
   def update
