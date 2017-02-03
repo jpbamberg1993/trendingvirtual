@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :comment do
-    commenter "MyString"
-body "MyText"
-article nil
+    email "jpbamberg1993@gmail.com"
+    username "The Bam"
+    body "Test creation comment."
   end
 
 end
