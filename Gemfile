@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.2'
 
 gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
@@ -23,11 +23,16 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'will_paginate', '~> 3.1'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
-gem "rack-timeout"
+gem 'browser-timezone-rails'
+gem 'closure_tree', '~> 6.2'
+gem 'rb-readline', '~> 0.5.3'
+gem 'best_in_place', '~> 3.0.1'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
@@ -54,6 +59,7 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', require: false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'

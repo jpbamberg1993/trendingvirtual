@@ -1,0 +1,17 @@
+.vote-up{class: ('user-voted' if user_upvoted?(comment))}
+  = upvotes_present?(comment)
+  - if current_user.voted_up_on? comment
+    = link_to unupvote_path(id: comment.id), method: :post do
+      %i.glyphicon.glyphicon-chevron-up
+  - else
+    = link_to upvote_path(id: comment.id), method: :post do
+      %i.glyphicon.glyphicon-chevron-up
+
+.vote-down{class: ('user-voted' if user_downvoted?(comment))}
+  = downvotes_present?(comment)
+  - if current_user.voted_down_on? comment
+    = link_to undownvote_path(id: comment.id), method: :post do
+      %i.glyphicon.glyphicon-chevron-down
+  - else
+    = link_to downvote_path(id: comment.id), method: :post do
+      %i.glyphicon.glyphicon-chevron-down

@@ -8,7 +8,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :users
+
   resources :articles do
     resources :comments
   end
+
+  resources :comments do
+    resources :comments
+  end
+
+  post 'upvote', to: 'comments#upvote'
+  post 'unupvote', to: 'comments#unupvote'
+  post 'downvote', to: 'comments#downvote'
+  post 'undownvote', to: 'comments#undownvote'
 end

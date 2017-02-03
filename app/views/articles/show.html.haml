@@ -28,4 +28,8 @@
       / Comments Form
       %hr/
       = render 'comments/form' if user_signed_in?
-      = render @article.comments if @article.comments.first.body != nil
+      %br
+      - if @article.comments.count > 0
+        %ul.commentList
+          = render partial: 'comments/comment',
+            collection: @article.comments.order('created_at DESC')

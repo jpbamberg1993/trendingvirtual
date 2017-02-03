@@ -1,0 +1,12 @@
+= form_for [comment, Comment.new] do |f|
+  .form-group
+    %p
+      = f.hidden_field :email, value: current_user.email
+      = f.hidden_field :username, value: current_user.username
+    %p
+      = f.text_area :body,
+        placeholder: "Join the discussion...",
+        class: 'form-control',
+        id: 'comment-form'
+  %button.btn{ type: 'submit' }
+    = f.submit "Post", class: 'comment-btn'
