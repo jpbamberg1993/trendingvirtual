@@ -2,6 +2,9 @@ $(document).ready ->
   $('.reply-comment-btn').click ->
     $(this).parents('.comment-footer').find('.reply-comment-form').toggleClass('hidden')
   $('.best_in_place').best_in_place()
+  $('.toggle-replies').click ->
+    $(this).parents('.row').find('.comment-replies').toggleClass('hidden')
+
 jQuery ->
   minimized_elements = $('p.minimize')
   minimized_elements.each ->

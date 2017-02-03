@@ -35,10 +35,14 @@
               commentable_id: comment.commentable_id),
               data: {confirm: 'Are you sure?'},
               method: :delete
+        - if comment.comments.present?
+          %a.toggle-replies Replies
+          %br
         %br
         - unless current_user == nil
           .reply-comment-form.hidden
             = render 'comments/reply_form', { comment: comment }
-  %ul
-    = render partial: 'comments/comment', collection: comment.comments
+  %ul.comment-replies.hidden
+    = render partial: 'comments/comment',
+      collection: comment.comments.order('created_at DESC')
 %br
