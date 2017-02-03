@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
   end
 
   def create
+    if (@commentable.class != Article) &&
+      (@commentable.commentable.class == Comment)
+      @commentable = @commentable.commentable
+    end
     @comment = @commentable.comments.new comment_params
 
     if @comment.save
@@ -24,7 +28,7 @@ class CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to article_path(params[:commentable_id])
+    redirect_to :back
   end
 
   def upvote
