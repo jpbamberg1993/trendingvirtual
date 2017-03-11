@@ -8,9 +8,18 @@
       .commentDate
         %span.date.sub-text
           = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
-      %p.commentText.minimize
-        = best_in_place comment, :body, type: :textarea, ok_button: 'Save',
-          activator: "#activator-#{comment.id}"
+      %p.commentText
+        %span.truncated
+          = truncate(comment.body,
+            length: 300,
+            omission: '',
+            seperator: ' ') { link_to ' ...read more',
+              'javascript:void(0);', class: "read-more" }
+          %a.hide{ href: 'javascript:void(0);', id: "activator-#{comment.id}"}
+        %span.un-truncated.hide
+          = best_in_place comment, :body, type: :textarea, ok_button: 'Save',
+            activator: "#activator-#{comment.id}", class: 'comment-text'
+          = link_to 'read less ^', 'javascript:void(0);', class: 'read-less'
       %footer.comment-footer
         %ul
           %li.voting
@@ -22,7 +31,7 @@
             •
           %li.edit
             %a.edit-comment-btn{ href: 'javascript:void(0);',
-              id: "activator-#{comment.id}"} Edit
+              class: 'edit-btn' } Edit
           %li.bullet
             •
           %li.reply

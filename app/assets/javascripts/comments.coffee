@@ -7,22 +7,22 @@ $(document).ready ->
   $('.toggle-replies').click ->
     $(this).parents('.row').find('.comment-replies').toggleClass('hidden')
 
-jQuery ->
-  minimized_elements = $('p.minimize')
-  minimized_elements.each ->
-    t = $(this).text()
-    if t.length < 300
-      return
-    $(this).html t.slice(0, 300) +
-      '<span>... </span><a href="#" class="more">Read More</a>' +
-      '<span style="display:none;">' +
-      t.slice(300, t.length) +
-      ' <a href="#" class="less">Read Less</a></span>'
-  $('a.more', minimized_elements).click (event) ->
-    event.preventDefault()
-    $(this).hide().prev().hide()
-    $(this).next().show()
-    return
-  $('a.less', minimized_elements).click (event) ->
-    event.preventDefault()
-    $(this).parent().hide().prev().show().prev().show()
+  $('.read-more').click((e) ->
+    e.preventDefault()
+    $(this).parent().addClass('hide')
+    $(this).parent().siblings().removeClass('hide')
+  )
+
+  $('.edit-btn').click((e) ->
+    e.preventDefault()
+    $(this).parents('.comment-footer').siblings('.commentText').find('.read-more').click()
+    .siblings().click()
+    .parents()
+    .siblings().find('.read-less').addClass('hide')
+  )
+
+  $('.read-less').click((e) ->
+    e.preventDefault()
+    $(this).parent().addClass('hide')
+    $(this).parent().siblings().removeClass('hide')
+  )
