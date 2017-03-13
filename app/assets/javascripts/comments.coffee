@@ -7,6 +7,12 @@ $(document).ready ->
   $('.best_in_place').best_in_place()
 
   $('.toggle-replies').click ->
+    if this.innerHTML == 'Replies'
+      replyState = 'Hide'
+    else
+      replyState = 'Replies'
+
+    $(this).html(replyState)
     $(this).parents('.row').next('.comment-replies').toggleClass('hidden')
 
   $('.read-more').click (e) ->
