@@ -16,18 +16,17 @@ $(document).ready ->
     $(this).parents('.row').next('.comment-replies').toggleClass('hidden')
 
   $('.read-more').click (e) ->
-    e.preventDefault()
     $(this).parent().addClass('hide')
     $(this).parent().siblings().removeClass('hide')
 
   $('.edit-btn').click (e) ->
-    e.preventDefault()
-    $(this).parents('.comment-footer').siblings('.commentText').find('.read-more').click()
-    .siblings().click()
-    .parents()
-    .siblings().find('.read-less').addClass('hide')
+    comment = $(this).parents('.comment-footer').siblings('.commentText').find('a.hide')
+
+    comment.parent().addClass('hide')
+    comment.parent().siblings().removeClass('hide')
+
+    comment.click()
 
   $('.read-less').click (e) ->
-    e.preventDefault()
     $(this).parent().addClass('hide')
     $(this).parent().siblings().removeClass('hide')

@@ -15,11 +15,15 @@
             omission: '',
             seperator: ' ') { link_to ' ...read more',
               'javascript:void(0);', class: "read-more" }
-          %a.hide{ href: 'javascript:void(0);', id: "activator-#{comment.id}"}
+          %a.hide{ href: 'javascript:void(0);',
+              class: 'edit-click',
+              id: "activator-#{comment.id}" }
+            test
         %span.un-truncated.hide
           = best_in_place comment, :body, type: :textarea, ok_button: 'Save',
             activator: "#activator-#{comment.id}", class: 'comment-text'
-          = link_to 'read less ^', 'javascript:void(0);', class: 'read-less'
+          - if comment.body.length > 300
+            = link_to 'read less ^', 'javascript:void(0);', class: 'read-less'
       %footer.comment-footer
         %ul
           %li.voting
@@ -29,21 +33,23 @@
               = render 'comments/no_user_voting', comment: comment
           %li.bullet
             •
-          %li.edit
-            %a.edit-comment-btn{ href: 'javascript:void(0);',
-              class: 'edit-btn' } Edit
-          %li.bullet
-            •
+          - if current_user.email == comment.email
+            %li.edit
+              %a.edit-comment-btn{ href: 'javascript:void(0);',
+                class: 'edit-btn' } Edit
+            %li.bullet
+              •
           %li.reply
             %a.reply-comment-btn{ href: 'javascript:void(0);' } Reply
-          %li.bullet
-            •
-          %li.delete-comment
-            = link_to 'Delete',
-              comment_path(id: comment.id,
-              commentable_id: comment.commentable_id),
-              data: {confirm: 'Are you sure?'},
-              method: :delete
+          - if current_user.email == comment.email
+            %li.bullet
+              •
+            %li.delete-comment
+              = link_to 'Delete',
+                comment_path(id: comment.id,
+                commentable_id: comment.commentable_id),
+                data: {confirm: 'Are you sure?'},
+                method: :delete
         - if comment.comments.present?
           %a.toggle-replies Replies
           %br
