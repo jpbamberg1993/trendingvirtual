@@ -20,7 +20,8 @@ $(document).ready ->
     $(this).parent().siblings().removeClass('hide')
 
   $('.edit-btn').click (e) ->
-    comment = $(this).parents('.comment-footer').siblings('.commentText').find('a.hide')
+    comment = $(this).parents('.comment-footer').siblings('.commentText')
+      .find('a.hide')
 
     comment.parent().addClass('hide')
     comment.parent().siblings().removeClass('hide')
