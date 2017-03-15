@@ -21,7 +21,8 @@
             test
         %span.un-truncated.hide
           = best_in_place comment, :body, type: :textarea, ok_button: 'Save',
-            activator: "#activator-#{comment.id}", class: 'comment-text'
+            activator: "#activator-#{comment.id}", class: 'comment-text',
+            html_attrs: { style: 'width: 100%' }
           - if comment.body.length > 300
             = link_to 'read less ^', 'javascript:void(0);', class: 'read-less'
       %footer.comment-footer
