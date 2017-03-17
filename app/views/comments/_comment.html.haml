@@ -8,9 +8,23 @@
       .commentDate
         %span.date.sub-text
           = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
-      %p.commentText.minimize
-        = best_in_place comment, :body, type: :textarea, ok_button: 'Save',
-          activator: "#activator-#{comment.id}"
+      %p.commentText
+        %span.truncated
+          = truncate(comment.body,
+            length: 300,
+            omission: '',
+            seperator: ' ') { link_to ' ...read more',
+              'javascript:void(0);', class: "read-more" }
+          %a.hide{ href: 'javascript:void(0);',
+              class: 'edit-click',
+              id: "activator-#{comment.id}" }
+            test
+        %span.un-truncated.hide
+          = best_in_place comment, :body, type: :textarea, ok_button: 'Save',
+            activator: "#activator-#{comment.id}", class: 'comment-text',
+            html_attrs: { style: 'width: 100%' }
+          - if comment.body.length > 300
+            = link_to 'read less ^', 'javascript:void(0);', class: 'read-less'
       %footer.comment-footer
         %ul
           %li.voting
@@ -20,21 +34,23 @@
               = render 'comments/no_user_voting', comment: comment
           %li.bullet
             •
-          %li.edit
-            %a.edit-comment-btn{ href: 'javascript:void(0);',
-              id: "activator-#{comment.id}"} Edit
-          %li.bullet
-            •
+          - if current_user.email == comment.email
+            %li.edit
+              %a.edit-comment-btn{ href: 'javascript:void(0);',
+                class: 'edit-btn' } Edit
+            %li.bullet
+              •
           %li.reply
             %a.reply-comment-btn{ href: 'javascript:void(0);' } Reply
-          %li.bullet
-            •
-          %li.delete-comment
-            = link_to 'Delete',
-              comment_path(id: comment.id,
-              commentable_id: comment.commentable_id),
-              data: {confirm: 'Are you sure?'},
-              method: :delete
+          - if current_user.email == comment.email
+            %li.bullet
+              •
+            %li.delete-comment
+              = link_to 'Delete',
+                comment_path(id: comment.id,
+                commentable_id: comment.commentable_id),
+                data: {confirm: 'Are you sure?'},
+                method: :delete
         - if comment.comments.present?
           %a.toggle-replies Replies
           %br
