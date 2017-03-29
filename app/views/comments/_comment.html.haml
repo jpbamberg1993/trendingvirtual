@@ -34,7 +34,7 @@
               = render 'comments/no_user_voting', comment: comment
           %li.bullet
             •
-          - if current_user.email == comment.email
+          - if current_user.present? && current_user.email == comment.email
             %li.edit
               %a.edit-comment-btn{ href: 'javascript:void(0);',
                 class: 'edit-btn' } Edit
@@ -42,7 +42,7 @@
               •
           %li.reply
             %a.reply-comment-btn{ href: 'javascript:void(0);' } Reply
-          - if current_user.email == comment.email
+          - if current_user.present? && current_user.email == comment.email
             %li.bullet
               •
             %li.delete-comment
