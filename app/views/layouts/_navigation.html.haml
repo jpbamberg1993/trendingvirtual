@@ -1,19 +1,51 @@
 %nav.navbar.navbar-default
   .row
-    .container-fluid
-      .navbar-header
+    .container
+      .navbar-header.row
         .col-xs-9.col-sm-3
           = link_to root_path do
             = image_tag "tv-logo-white",
               id: "logo", alt: "Trending Virtual Logo"
-        .col-xs-2.col-xs-offset-1
+        .dropdown-btn.col-xs-2
           %button.navbar-toggle{ "data-target" => ".navbar-collapse",
             "data-toggle" => "collapse", type: "button" }
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-      .collapse.navbar-collapse
-        %ul.nav.navbar-nav
-          %li= link_to 'Home', root_path
-          = render 'layouts/navigation_links'
+        .col-xs-12.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li= link_to 'HOME', root_path
+            = render 'layouts/navigation_links'
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false",
+                                 "aria-haspopup" => "true",
+                                 "data-toggle" => "dropdown",
+                                 href: "#",
+                                 role: "button"}
+                %span.glyphicon.glyphicon-menu-hamburger
+                CATEGORIES
+              %ul.row.dropdown-menu
+                %li
+                  %a{href: '#'}
+                    Action
+                %li
+                  %a{href: '#'}
+                    Action
+                %li
+                  %a{href: '#'}
+                    Action
+                %li
+                  %a{href: '#'}
+                    Action
+                %li
+                  %a{href: '#'}
+                    Action
+                %li
+                  %a{href: '#'}
+                    Action
+          %form.navbar-form.navbar-left
+            .form-group
+              %input.form-control{type: "texta", placeholder: "Search"}
+            %button.btn.btn-default{type: "submit"}
+              SEARCH

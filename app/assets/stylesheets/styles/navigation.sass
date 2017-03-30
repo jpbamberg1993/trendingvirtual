@@ -1,6 +1,7 @@
 #logo
   max-width: 100%
-  margin-top: 3px
+  padding: 17px 0
+  padding-left: 5px
 
 .navbar-default .navbar-toggle
   margin: 0
@@ -13,17 +14,32 @@
   color: #000
 
 .navbar-default
-  background-color: #0D0D0D
-  .navbar-nav > li > a
-    color: #fff
-    padding-top: 25px
-    padding-bottom: 25px
+  background-color: #2C333A
+
+  .navbar-nav
+    padding: 0 10px
+
+    & > .open > a,
+    & > .open > a:focus
+      background-color: #222
+      color: #fff
+
+    & > li > a
+      color: #fff
+      padding: 25px 15px
+
+      &:hover, &:active, &:focus
+        background: #222
+        color: #fff
+
   .navbar-toggle
     margin: 0
     background: none
     border-color: transparent
+
     &:hover, &:active
-      background: none
+      background: #222
+
     .icon-bar,
     &.navbar-toggle:hover .icon-bar
       background-color: #fff
@@ -33,5 +49,16 @@
   min-height: 0
   border: none
 
-.navbar-header
-  padding: 20px 0
+.navbar-nav > li > .dropdown-menu
+  background: #2C333A
+  color: #fff
+
+.dropdown-menu > li > a
+  color: #fff
+
+.navbar-form
+  margin: 18px 0
+
+@media screen and (max-width: 768px)
+  .dropdown-btn
+    margin: 5% 0 0 8px
