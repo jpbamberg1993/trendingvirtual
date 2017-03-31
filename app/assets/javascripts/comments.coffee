@@ -15,11 +15,11 @@ $(document).ready ->
     $(this).html(replyState)
     $(this).parents('.row').next('.comment-replies').toggleClass('hidden')
 
-  $('.read-more').click (e) ->
+  $('.read-more').click () ->
     $(this).parent().addClass('hide')
     $(this).parent().siblings().removeClass('hide')
 
-  $('.edit-btn').click (e) ->
+  $('.edit-btn').click () ->
     comment = $(this).parents('.comment-footer').siblings('.commentText')
       .find('a.hide')
 
@@ -28,6 +28,6 @@ $(document).ready ->
 
     comment.click()
 
-  $('.read-less').click (e) ->
+  $('.read-less').click () ->
     $(this).parent().addClass('hide')
     $(this).parent().siblings().removeClass('hide')
