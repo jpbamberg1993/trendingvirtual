@@ -1,3 +1,36 @@
+#bs-carousel.carousel.fade-carousel.slide{"data-interval" => "4000",
+  "data-ride" => "carousel"}
+  / Overlay
+  .overlay
+  / Indicators
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#bs-carousel"}
+    %li{"data-slide-to" => "1", "data-target" => "#bs-carousel"}
+    %li{"data-slide-to" => "2", "data-target" => "#bs-carousel"}
+  / Wrapper for slides
+  .carousel-inner.list-unstyled
+    .item.slides.active
+      .slide-1
+      .hero
+        %hgroup
+          %h1= @articles[0].title
+          %h3 1 Get start your next awesome project
+        %button.btn.btn-hero.btn-lg{:role => "button"} See all features
+    .item.slides
+      .slide-2
+      .hero
+        %hgroup
+          %h1= @articles[1].title
+          %h3 2 Get start your next awesome project
+        %button.btn.btn-hero.btn-lg{:role => "button"} See all features
+    .item.slides
+      .slide-3
+      .hero
+        %hgroup
+          %h1= @articles[2].title
+          %h3 3 Get start your next awesome project
+        %button.btn.btn-hero.btn-lg{:role => "button"} See all features
+
 / Page Content
 .container
   .row
