@@ -13,6 +13,12 @@
   %p.title.col-sm-6
     = f.label :title
     = f.text_field :title, class:"form-control", placeholder:"Title"
+  %p.category.col-sm-2
+    = f.label :category_id
+    = f.collection_select :category_id, Category.all, :id, :name, prompt: true
+  %p.category.col-sm-10
+    = f.label :subject
+    = f.text_area :subject, class: "form-control", placeholder: "Subject..."
   %p.content.col-xs-12
     = f.label :text
     = f.text_area :text,
