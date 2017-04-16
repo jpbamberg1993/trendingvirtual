@@ -1,40 +1,75 @@
 #bs-carousel.carousel.fade-carousel.slide{"data-interval" => "4000",
   "data-ride" => "carousel"}
+
   / Overlay
   .overlay
+
   / Indicators
   %ol.carousel-indicators
     %li.active{"data-slide-to" => "0", "data-target" => "#bs-carousel"}
     %li{"data-slide-to" => "1", "data-target" => "#bs-carousel"}
     %li{"data-slide-to" => "2", "data-target" => "#bs-carousel"}
+    %li{"data-slide-to" => "3", "data-target" => "#bs-carousel"}
+
   / Wrapper for slides
   .carousel-inner.list-unstyled
     .item.slides.active
       .slide-1
       .hero
         %hgroup
+          %a{ href: "#" }
+            = @articles[0].category.name.upcase
           %h1= @articles[0].title
-          %h3 1 Get start your next awesome project
-        %button.btn.btn-hero.btn-lg{:role => "button"} See all features
+          %h4= @articles[0].subject
+          %h5
+            %strong
+              = @articles[0].author
+            on
+            = @articles[0].created_at.strftime('%B %d, %Y')
     .item.slides
       .slide-2
       .hero
         %hgroup
+          %a{ href: "#" }
+            = @articles[1].category.name.upcase
           %h1= @articles[1].title
-          %h3 2 Get start your next awesome project
-        %button.btn.btn-hero.btn-lg{:role => "button"} See all features
+          %h4= @articles[1].subject
+          %h5
+            %strong
+              = @articles[1].author
+            on
+            = @articles[1].created_at.strftime('%B %d, %Y')
     .item.slides
       .slide-3
       .hero
         %hgroup
+          %a{ href: "#" }
+            = @articles[2].category.name.upcase
           %h1= @articles[2].title
-          %h3 3 Get start your next awesome project
-        %button.btn.btn-hero.btn-lg{:role => "button"} See all features
+          %h4= @articles[2].subject
+          %h5
+          %strong
+            = @articles[2].author
+          on
+          = @articles[2].created_at.strftime('%B %d, %Y')
+    .item.slides
+      .slide-4
+      .hero
+        %hgroup
+          %a{ href: "#" }
+            = @articles[3].category.name.upcase
+          %h1= @articles[3].title
+          %h4= @articles[3].subject
+          %h5
+          %strong
+            = @articles[3].author
+          on
+          = @articles[3].created_at.strftime('%B %d, %Y')
 
 / Page Content
 .container
   .row
+
     / Blog Entries Column
     .col-md-8.no-padding
-      / Articles
       = render 'articles/article'
