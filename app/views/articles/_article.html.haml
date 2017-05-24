@@ -4,21 +4,32 @@
       = link_to article_path(article[:id]) do
         .row.vertical-align
           .col-xs-10.no-padding-r
-            %h1
+            %h1.no-margin
               = article.title
-          .col-xs-1.article-arrow.flex-center-vertically.visible-xs
+          .col-xs-1.article-arrow.visible-xs
             .fa.fa-angle-double-right.fa-lg{class: "#{cycle_colors}"}
+    %hr
     .hidden-xs
-      %p.lead.col-xs-6
-        by #{link_to article.author, root_path}
-      %p.time.lead.col-xs-6
-        %span.glyphicon.glyphicon-time
-        = article.created_at.strftime("%d-%m-%Y")
-      %hr/
+      %h4.lead.author.col-xs-12
+        By #{link_to article.author, root_path}
+      .col-xs-6
+        = image_tag 'time_icon.png', alt: 'Clock Icon', class: 'img-responsive icon vcenter'
+        %h4.time.lead.vcenter
+          = article.created_at.strftime("%d-%m-%Y")
+      .col-xs-6
+        = image_tag 'category_icon.png', alt: 'Category Icon', class: 'img-responsive icon vcenter'
+        %a.lead.vcenter
+          - if article.category
+            = article.category.name
+      .col-xs-12
+        = image_tag 'comment_icon.png', alt: 'Comment Icon', class: 'img-responsive icon vcenter'
+        %a.lead.vcenter
+          = article.comments.count
+      %hr.visible-xs
       #display-content.col-xs-12
-        = article.text.html_safe
+        = truncate_html article.text.html_safe, length: 1200, omission: '...'
         = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe,
           article_path(article[:id]),
           class: "btn btn-primary"
-    %hr/
+    %hr.full-width.visible-xs
 = will_paginate @collection, class: "pag-wrap", previous_label: "&#8592; Prev"

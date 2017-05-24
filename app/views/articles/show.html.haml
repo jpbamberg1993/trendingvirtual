@@ -3,21 +3,23 @@
   .row
     / Blog Post Content Column
     #article-header.col-md-8
+      = link_to 'Edit', edit_article_path(@article), class: 'pull-right'
       / Title
       %h1
         = @article.title
-      = link_to 'Edit', edit_article_path(@article)
       / Author
       %p.lead
         by
         %a{href: '#'}
           = @article.author
       / Date - Time
-      %p
-        %span.glyphicon.glyphicon-time
-          = @article.created_at.strftime('%I:%M%p')
-          %br/
-          = @article.created_at.strftime('%d-%m-%Y')
+      %br/
+      %span.glyphicon.glyphicon-time.vcenter
+      %h4.vcenter
+        = @article.created_at.strftime('%I:%M%p')
+      %br/
+      %h4.vcenter
+        = @article.created_at.strftime('%d-%m-%Y')
       %hr/
     / Post Content
     #article-body.col-md-8
