@@ -29,6 +29,7 @@ gem 'rb-readline', '~> 0.5.3'
 gem 'best_in_place', '~> 3.0.1'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'truncate_html', '~> 0.9.3'
+gem 'hassle', '~> 0.0.1'
 
 group :development, :test do
   gem 'factory_girl_rails'
