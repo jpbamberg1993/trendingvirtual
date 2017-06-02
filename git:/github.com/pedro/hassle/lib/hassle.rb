@@ -1,0 +1,2 @@
+module Hassle
+end
