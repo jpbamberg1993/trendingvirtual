@@ -22,7 +22,13 @@
     %main{role: "main"}
       = render 'layouts/messages'
       = yield
-    %footer.footer-distributed
-      = render 'layouts/footer'
+    %footer
+      .row.footer-distributed
+        = render 'layouts/footer'
+      .copyright
+        .container
+          %p.footer-company-name
+            Trending Virtual LLC ©
+            = Time.new.year
 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true

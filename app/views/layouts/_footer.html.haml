@@ -1,32 +1,33 @@
-.footer-left
-  %h3
-    Trending
-    %span Virtual
-  %p.footer-links
-    %a{:href => "/"} Blog
-    ·
-    %a{:href => "#"} About
-    ·
-    %a{:href => "#"} Faq
-    ·
-    %a{:href => "#"} Contact
-  %p.footer-company-name Trending Virtual LLC © 2015
-.footer-center
-  %div
-    %i.fa.fa-map-marker
-    %p
-      %span Arvada, Colorado
-  %div
-    %i.fa.fa-envelope
-    %p
-      %a{:href => "mailto:support@trendingvirtual.com"}
-        support@trendingvirtual.com
-.footer-right
-  %p.footer-company-about
-    %span About the company
-    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-  .footer-icons
-    %a{:href => "#"}
-      %i.fa.fa-twitter
-    %a{:href => "https://www.linkedin.com/in/kvperreault"}
-      %i.fa.fa-linkedin
+.container
+  .col-sm-2.footer-left
+    = image_tag "logo-square.png",
+      alt: "Logo Trending Virtual",
+      class: "img-responsive"
+  .col-sm-4.col-sm-offset-1
+    %p.footer-company-about
+      %span About the company
+      Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+    .footer-icons
+      %a{:href => "#"}
+        %i.fa.fa-twitter
+      %a{:href => "https://www.linkedin.com/in/kvperreault"}
+        %i.fa.fa-linkedin
+  .col-sm-4.col-sm-offset-1.footer-right
+    %div
+      %i.fa.fa-map-marker
+      %p
+        %span Arvada, Colorado
+    %div
+      %i.fa.fa-envelope
+      %p
+        %a{:href => "mailto:support@trendingvirtual.com"}
+          support@trendingvirtual.com
+    %p.footer-links
+      %a{:href => "/"} Blog
+      ·
+      %a{:href => "#"} About
+      ·
+      %a{:href => "#"} Faq
+      ·
+      %a{:href => "#"} Contact
+
