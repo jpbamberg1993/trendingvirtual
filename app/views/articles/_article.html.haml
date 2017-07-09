@@ -18,9 +18,8 @@
           = article.created_at.strftime("%d-%m-%Y")
       .col-xs-6
         = image_tag 'category_icon.png', alt: 'Category Icon', class: 'img-responsive icon vcenter'
-        %a.lead.vcenter
-          - if article.category
-            = link_to article.category.name, category_show_path(article.category.id)
+        - if article.category
+          = link_to article.category.name, category_show_path(article.category.id), class: 'lead vcenter'
       .col-xs-12
         = image_tag 'comment_icon.png', alt: 'Comment Icon', class: 'img-responsive icon vcenter'
         %a.lead.vcenter
