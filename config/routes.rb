@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/category/show/:id' => 'category#show', as: 'category_show'
+
   mount RedactorRails::Engine => '/redactor_rails'
   root to: 'articles#index'
 

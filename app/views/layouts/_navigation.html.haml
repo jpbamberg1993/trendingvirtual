@@ -28,8 +28,7 @@
               %ul.row.dropdown-menu
                 - categories.each do |cat|
                   %li
-                    %a{href: '#'}
-                      = cat.name
+                    = link_to cat.name, category_show_path(cat.id)
           %form.navbar-form.navbar-left
             .form-group
               %input.form-control{type: "text", placeholder: "Search"}

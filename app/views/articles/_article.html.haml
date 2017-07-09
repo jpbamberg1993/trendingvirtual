@@ -1,6 +1,6 @@
 - @articles.each do |article|
   .row.article-row
-    %h5.article-title.col-xs-12
+    .article-title.col-xs-12
       = link_to article_path(article[:id]) do
         .row.vertical-align
           .col-xs-10.no-padding-r
@@ -20,7 +20,7 @@
         = image_tag 'category_icon.png', alt: 'Category Icon', class: 'img-responsive icon vcenter'
         %a.lead.vcenter
           - if article.category
-            = article.category.name
+            = link_to article.category.name, category_show_path(article.category.id)
       .col-xs-12
         = image_tag 'comment_icon.png', alt: 'Comment Icon', class: 'img-responsive icon vcenter'
         %a.lead.vcenter
@@ -32,4 +32,4 @@
           article_path(article[:id]),
           class: "btn btn-primary"
     %hr.full-width.visible-xs
-= will_paginate @collection, class: "pag-wrap", previous_label: "&#8592; Prev"
+= will_paginate @articles, class: "pag-wrap", previous_label: "&#8592; Prev"

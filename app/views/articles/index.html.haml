@@ -18,8 +18,8 @@
         .slide-1
         .hero
           %hgroup
-            %a{ href: "#" }
-              = @articles[0].category.name.upcase
+            = link_to @articles[0].category.name.upcase,
+              category_show_path(@articles[0].category.id)
             %h1= @articles[0].title
             %p= @articles[0].subject
             %h5
@@ -31,8 +31,8 @@
         .slide-2
         .hero
           %hgroup
-            %a{ href: "#" }
-              = @articles[1].category.name.upcase
+            = link_to @articles[1].category.name.upcase,
+              category_show_path(@articles[1].category.id)
             %h1= @articles[1].title
             %p= @articles[1].subject
             %h5
@@ -44,8 +44,8 @@
         .slide-3
         .hero
           %hgroup
-            %a{ href: "#" }
-              = @articles[2].category.name.upcase
+            = link_to @articles[2].category.name.upcase,
+              category_show_path(@articles[2].category.id)
             %h1= @articles[2].title
             %p= @articles[2].subject
             %h5

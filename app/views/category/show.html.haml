@@ -1,0 +1,6 @@
+.container
+  #category.row
+    .col-md-8.no-padding
+      %h3= "#{@category.name}:"
+      %p= @category.description
+      = render 'articles/article'
