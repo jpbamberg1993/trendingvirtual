@@ -3,18 +3,18 @@
   .row
     .container
       .navbar-header.row
-        .col-xs-9.col-sm-3
+        .col-xs-9.col-sm-4
           = link_to root_path do
-            = image_tag "tv-logo-white",
+            = image_tag "logo-rec.png",
               id: "logo", alt: "Trending Virtual Logo"
-        .dropdown-btn.col-xs-2
+        .col-xs-2.dropdown-btn
           %button.navbar-toggle{ "data-target" => ".navbar-collapse",
             "data-toggle" => "collapse", type: "button" }
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-        .col-xs-12.collapse.navbar-collapse
+        .col-xs-12.col-sm-8.collapse.navbar-collapse
           %ul.nav.navbar-nav
             = render 'layouts/navigation_links'
             %li.dropdown
