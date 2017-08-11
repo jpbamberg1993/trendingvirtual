@@ -18,32 +18,37 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    session[:return_to] ||= request.referer
     Comment.find(params[:id]).destroy
-    redirect_to :back
+    redirect_to session.delete(:return_to)
   end
 
   def upvote
+    session[:return_to] ||= request.referer
     @comment = Comment.find(params[:id])
     @comment.vote_by voter: current_user
-    redirect_to :back
+    redirect_to session.delete(:return_to)
   end
 
   def unupvote
+    session[:return_to] ||= request.referer
     @comment = Comment.find(params[:id])
     @comment.unliked_by current_user
-    redirect_to :back
+    redirect_to session.delete(:return_to)
   end
 
   def downvote
+    session[:return_to] ||= request.referer
     @comment = Comment.find(params[:id])
     @comment.downvote_from current_user
-    redirect_to :back
+    redirect_to session.delete(:return_to)
   end
 
   def undownvote
+    session[:return_to] ||= request.referer
     @comment = Comment.find(params[:id])
     @comment.undisliked_by current_user
-    redirect_to :back
+    redirect_to session.delete(:return_to)
   end
 
   private
