@@ -74,20 +74,22 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
+    address: 'smtp.sendgrid.net',
     port: 587,
     domain: Rails.application.secrets.domain_name,
-    authentication: "plain",
+    authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_password
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD']
   }
   # ActionMailer Config
-  config.action_mailer.default_url_options = { host: Rails.application.secrets.domain_name }
+  config.action_mailer.default_url_options = { host: ENV['DOMAIN_NAME'] }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  # Send email in development mode?
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
-
+  # Raises error for missing translations
+  # config.action_view.raise_on_missing_translations = true
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
