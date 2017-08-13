@@ -1,7 +1,13 @@
 class ArticlesController < ApplicationController
   def index
-    articles = Article.paginate(page: params[:page], per_page: 10)
-    @articles = articles.order('created_at DESC')
+    if params[:search]
+      @searched = true
+      @articles = Article.search(params[:search]).order('created_at DESC')
+      @articles = @articles.paginate(page: params[:page], per_page: 10)
+    else
+      @articles = Article.paginate(page: params[:page], per_page: 10)
+      @articles = @articles.order('created_at DESC')
+    end
   end
 
   def show

@@ -31,6 +31,6 @@
                     = link_to cat.name, category_show_path(cat.id)
           %form.navbar-form.navbar-left
             .form-group
-              %input.form-control{type: "text", placeholder: "Search"}
-            %button.btn.btn-default{type: "submit"}
-              SEARCH
+              = form_tag(articles_path, method: 'get', id: 'search-form') do
+                = text_field_tag :search, params[:search], placeholder: "Search", class: 'form-control'
+                = submit_tag "SEARCH", class: 'btn btn-default'
