@@ -1,4 +1,4 @@
-- if @articles.length > 3
+- if @articles.length > 3 && @searched != true
   #bs-carousel.carousel.fade-carousel.slide{"data-interval" => "8000",
     "data-ride" => "carousel"}
 
@@ -67,6 +67,14 @@
               on
               = @articles[3].created_at.strftime('%B %d, %Y')
 
+  / Page Content
+  .container
+    .row
+      / Blog Entries Column
+      .col-md-8.no-padding
+        = render 'articles/article'
+
+- else
   / Page Content
   .container
     .row
