@@ -31,4 +31,5 @@
           article_path(article[:id]),
           class: "btn btn-primary"
     %hr.full-width.visible-xs
-= will_paginate @articles, class: "pag-wrap", previous_label: "&#8592; Prev"
+- if @articles.count > 10
+  = will_paginate @articles, class: "pag-wrap", previous_label: "&#8592; Prev"
