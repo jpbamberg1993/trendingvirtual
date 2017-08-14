@@ -7,8 +7,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    response = Comment.save_comment(@commentable, comment_params)
-    redirect_to :back, notice: response
+    session[:return_to] ||= request.referer
+    Comment.save_comment(@commentable, comment_params)
+    redirect_to session.delete(:return_to)
   end
 
   def update
