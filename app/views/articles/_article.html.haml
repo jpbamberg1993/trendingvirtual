@@ -26,10 +26,9 @@
           = article.comments.count
       %hr.visible-xs
       #display-content.col-xs-12
-        = truncate_html article.text.html_safe, length: 1200, omission: '...'
-        = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe,
-          article_path(article[:id]),
-          class: "btn btn-primary"
+        = truncate_html article.text.html_safe, length: 1200, omission: ''
+        = link_to ('...read more').html_safe,
+          article_path(article[:id])
     %hr.full-width.visible-xs
 - if @articles.count > 10
   = will_paginate @articles, class: "pag-wrap", previous_label: "&#8592; Prev"
