@@ -2,6 +2,7 @@
   = form_for [@article, Comment.new] do |f|
     .form-group
       %p
+        = f.hidden_field :user_id, value: current_user.id
         = f.hidden_field :email, value: current_user.email
         = f.hidden_field :username, value: current_user.username
       %p

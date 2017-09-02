@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814235448) do
+ActiveRecord::Schema.define(version: 20170902025942) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20170814235448) do
     t.string "commentable_type"
     t.integer "upvote"
     t.integer "downvote"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "redactor_assets", force: :cascade do |t|
