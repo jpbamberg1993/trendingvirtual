@@ -56,6 +56,7 @@ class ArticlesController < ApplicationController
                                     :text,
                                     :author,
                                     :subject,
-                                    :category_id)
+                                    :category_id,
+                                    :user_id)
   end
 end
