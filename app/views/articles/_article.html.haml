@@ -8,7 +8,7 @@
               = article.title
           .col-xs-1.article-arrow.visible-xs
             .fa.fa-angle-double-right.fa-lg{class: "#{cycle_colors}"}
-    %hr
+    %hr.hidden-xs
     .hidden-xs
       .col-xs-6
         %h4.lead.author
@@ -30,6 +30,5 @@
         = truncate_html article.text.html_safe, length: 1200, omission: ''
         = link_to ('...read more').html_safe,
           article_path(article[:id])
-    %hr.full-width.visible-xs
 - if @articles.count > 10
   = will_paginate @articles, class: "pag-wrap", previous_label: "&#8592; Prev"
