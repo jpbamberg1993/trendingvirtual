@@ -1,26 +1,34 @@
 - title @article.title
-%h1
-  Editing Articles
+.container
+  %h1
+    Editing Articles
 
-= form_for :article, url: article_path(@article), method: :patch do |f|
-  - if @article.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@article.errors.count, 'error')
-        prohibited this article from being saved:
-      %ul
-        - @article.errors.full_messages do |msg|
-          %li= msg
+  = form_for :article, url: article_path(@article), method: :patch do |f|
+    - if @article.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@article.errors.count, 'error')
+          prohibited this article from being saved:
+        %ul
+          - @article.errors.full_messages do |msg|
+            %li= msg
+    %p.author.col-sm-6
+      = f.label :author
+      = f.text_field :author, class:"form-control", placeholder:"Author"
+    %p.title.col-sm-6
+      = f.label :title
+      = f.text_field :title, class:"form-control", placeholder:"Title"
+    %p.category.col-sm-2
+      = f.label :category_id
+      = f.collection_select :category_id, Category.all, :id, :name, prompt: true
+    %p.category.col-sm-10
+      = f.label :subject
+      = f.text_area :subject, class: "form-control", placeholder: "Subject..."
+    %p.content.col-xs-12
+      = f.label :text
+      = f.text_area :text, class: "redactor"
+    = f.submit "Create",
+      class:"form-create btn btn-default col-xs-4 col-xs-offset-1"
 
-  %p
-    = f.label :title
-    %br
-    = f.text_field :title
-  %p
-    = f.label :text
-    %br
-    = f.text_area :text, class: 'redactor', id: 'edit-content'
-  %p
-    = f.submit
-
-= link_to 'Back', articles_path
+    %p.back.btn.btn-default.col-xs-4.col-xs-offset-2
+      = link_to 'Back', article_path(@article.id)
