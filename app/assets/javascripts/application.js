@@ -5,5 +5,6 @@
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require redactor-rails
+//= require redactor2_rails
+//= require redactor
 //= require_tree .

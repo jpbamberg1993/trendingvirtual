@@ -22,9 +22,6 @@
     = f.text_area :subject, class: "form-control", placeholder: "Subject..."
   %p.content.col-xs-12
     = f.label :text
-    = f.text_area :text,
-      class: 'redactor',
-      id: 'article-content',
-      placeholder:"Content of Article..."
+    = f.text_area :text, class: "redactor"
   = f.submit "Create",
     class:"form-create btn btn-default col-xs-4 col-xs-offset-1"

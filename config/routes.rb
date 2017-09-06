@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  mount Redactor2Rails::Engine => '/redactor2_rails'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/category/show/:id' => 'category#show', as: 'category_show'
-
-  mount RedactorRails::Engine => '/redactor_rails'
 
   # Leave until decided on side widget well
   get 'visitors', to: 'visitors#index'
