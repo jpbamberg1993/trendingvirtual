@@ -3,7 +3,8 @@
   .row
     / Blog Post Content Column
     #article-header.col-md-8
-      = link_to 'Edit', edit_article_path(@article), class: 'pull-right'
+      - if @article.user_id == current_user.id
+        = link_to 'Edit', edit_article_path(@article), class: 'pull-right'
       / Title
       %h1
         = @article.title
