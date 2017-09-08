@@ -86,10 +86,6 @@
   color:  #ffffff
   font-size: 14px
   font-weight: bold
-  margin-bottom: 20px
-
-.footer-distributed .footer-icons
-  margin-top: 25px
 
 .footer-distributed .footer-right .footer-icons a
   display: inline-block
@@ -114,8 +110,11 @@
 .copyright p
   text-align: left
   color: #FFF
-  padding: 10px 0
-  margin-bottom: 0px
+  padding: 10px
+  margin-bottom: 0
+
+.footer-logo
+  max-width: 200px
 
 @media (max-width: 880px)
   .footer-distributed
@@ -127,7 +126,10 @@
     display: block
     width: 100%
     margin-bottom: 40px
-    text-align: center
 
   .footer-distributed .footer-center i
     margin-left: 0
+
+@media (min-width: 768px)
+  .footer-logo
+    max-width: 120px
