@@ -3,8 +3,8 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
   acts_as_votable
-
   before_save :default_vote_count
+  after_create_commit { RenderCommentJob.perform_later(self) }
 
   def default_vote_count
     self.upvote ||= 0

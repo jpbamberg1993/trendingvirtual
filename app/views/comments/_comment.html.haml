@@ -1,64 +1,65 @@
 - unless comment.body.nil?
-  %li.row
-    .commenterImage.col-xs-2
-      = gravatar_for comment.email
-    .col-xs-10
-      .commenterName
-        = comment.username
-      .commentDate
-        %span.date.sub-text
-          = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
-      %p.commentText
-        %span.truncated
-          = truncate(comment.body,
-            length: 300,
-            omission: '',
-            seperator: ' ') { link_to ' ...read more',
-              'javascript:void(0);', class: "read-more" }
-          %a.hide{ href: 'javascript:void(0);',
-              class: 'edit-click',
-              id: "activator-#{comment.id}" }
-            test
-        %span.un-truncated.hide
-          = best_in_place comment, :body, type: :textarea, ok_button: 'Save',
-            activator: "#activator-#{comment.id}", class: 'comment-text',
-            html_attrs: { style: 'width: 100%' }
-          - if comment.body.length > 300
-            = link_to 'read less ^', 'javascript:void(0);', class: 'read-less'
-      %footer.comment-footer
-        %ul
-          %li.voting
-            - if current_user.present?
-              = render 'comments/user_voting', comment: comment
-            - else
-              = render 'comments/no_user_voting', comment: comment
-          %li.bullet
-            •
-          - if current_user.present? && current_user.email == comment.email
-            %li.edit
-              %a.edit-comment-btn{ href: 'javascript:void(0);',
-                class: 'edit-btn' } Edit
+  - cache comment do
+    %li.row.comment
+      .commenterImage.col-xs-2
+        = gravatar_for comment.email
+      .col-xs-10
+        .commenterName
+          = comment.username
+        .commentDate
+          %span.date.sub-text
+            = comment.created_at.strftime("%-m/%d/%y %-I:%M%P")
+        %p.commentText
+          %span.truncated
+            = truncate(comment.body,
+              length: 300,
+              omission: '',
+              seperator: ' ') { link_to ' ...read more',
+                'javascript:void(0);', class: "read-more" }
+            %a.hide{ href: 'javascript:void(0);',
+                class: 'edit-click',
+                id: "activator-#{comment.id}" }
+              test
+          %span.un-truncated.hide
+            = best_in_place comment, :body, as: :textarea, ok_button: 'Save',
+              activator: "#activator-#{comment.id}", class: 'comment-text',
+              html_attrs: { style: 'width: 100%' }
+            - if comment.body.length > 300
+              = link_to 'read less ^', 'javascript:void(0);', class: 'read-less'
+        %footer.comment-footer
+          %ul
+            %li.voting
+              - if current_user.present?
+                = render 'comments/user_voting', comment: comment
+              - else
+                = render 'comments/no_user_voting', comment: comment
             %li.bullet
               •
-          %li.reply
-            %a.reply-comment-btn{ href: 'javascript:void(0);' } Reply
-          - if current_user.present? && current_user.email == comment.email
-            %li.bullet
-              •
-            %li.delete-comment
-              = link_to 'Delete',
-                comment_path(id: comment.id,
-                commentable_id: comment.commentable_id),
-                data: {confirm: 'Are you sure?'},
-                method: :delete
-        - if comment.comments.present?
-          %a.toggle-replies Replies
+            - if current_user.present? && current_user.email == comment.email
+              %li.edit
+                %a.edit-comment-btn{ href: 'javascript:void(0);',
+                  class: 'edit-btn' } Edit
+              %li.bullet
+                •
+            %li.reply
+              %a.reply-comment-btn{ href: 'javascript:void(0);' } Reply
+            - if current_user.present? && current_user.email == comment.email
+              %li.bullet
+                •
+              %li.delete-comment
+                = link_to 'Delete',
+                  comment_path(id: comment.id,
+                  commentable_id: comment.commentable_id),
+                  data: {confirm: 'Are you sure?'},
+                  method: :delete
+          - if comment.comments.present?
+            %a.toggle-replies Replies
+            %br
           %br
-        %br
-        - unless current_user == nil
-          .reply-comment-form.hidden
-            = render 'comments/reply_form', { comment: comment }
-  %ul.comment-replies.hidden
-    = render partial: 'comments/comment',
-      collection: comment.comments.order('created_at DESC')
+          - unless current_user == nil
+            .reply-comment-form.hidden
+              = render 'comments/reply_form', { comment: comment }
+    %ul.comment-replies.hidden
+      = render partial: 'comments/comment',
+        collection: comment.comments.order('created_at DESC')
 %br

@@ -31,7 +31,7 @@
       / Comments Form
       %hr/
       - if user_signed_in?
-        = render 'comments/form'
+        = render 'comments/new'
       - else
         %p
           = link_to 'SIGN IN', new_user_session_path
@@ -39,7 +39,7 @@
           = link_to 'SIGN UP', new_user_registration_path
           to post comments.
       %br
-      - if @article.comments.count > 0
-        %ul.commentList
+      %ul#comments.commentList{"data-article-id" => "#{@article.id}"}
+        - if @article.comments.count > 0
           = render partial: 'comments/comment',
             collection: @article.comments.order('created_at DESC')

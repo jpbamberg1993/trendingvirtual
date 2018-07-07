@@ -1,5 +1,5 @@
-.well
-  = form_for [@article, Comment.new] do |f|
+#comment_form.well
+  = form_for [@article, Comment.new], remote: true do |f|
     .form-group
       %p
         = f.hidden_field :user_id, value: current_user.id
@@ -10,5 +10,5 @@
           placeholder: "Join the discussion...",
           class: 'form-control',
           id: 'comment-form'
-    %button.btn{ type: 'submit' }
+    %button.btn
       = f.submit "Post", class: 'comment-btn'
