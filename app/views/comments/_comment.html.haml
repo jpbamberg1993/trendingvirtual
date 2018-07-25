@@ -16,10 +16,6 @@
               omission: '',
               seperator: ' ') { link_to ' ...read more',
                 'javascript:void(0);', class: "read-more" }
-            %a.hide{ href: 'javascript:void(0);',
-                class: 'edit-click',
-                id: "activator-#{comment.id}" }
-              test
           %span.un-truncated.hide
             = best_in_place comment, :body, as: :textarea, ok_button: 'Save',
               activator: "#activator-#{comment.id}", class: 'comment-text',
