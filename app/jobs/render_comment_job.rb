@@ -2,8 +2,9 @@ class RenderCommentJob < ApplicationJob
   queue_as :default
 
   def perform(comment)
-    ActionCable.server.broadcast "#{comment.commentable_type.downcase}:#{comment.commentable_id}:comments",
-                                 comment: render_comment(comment)
+    ActionCable.server.broadcast(
+      "#{comment.commentable_type.downcase}:#{comment.commentable_id}:comments",
+      comment: render_comment(comment))
   end
 
   private
