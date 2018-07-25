@@ -16,4 +16,4 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
       @perform 'unfollow'
 
   received: (data) ->
-    $('#comments').prepend(data['comment'])
+    @collection().prepend(data['comment'])
